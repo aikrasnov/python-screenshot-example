@@ -33,7 +33,7 @@ class Element:
         https://docs.python.org/3/howto/descriptor.html
         :param instance: instance of owner
         :param owner: type of owner
-        :return: self or WebElement instance
+        :return: self or CustomWebElement instance
         """
         if isinstance(instance, Element):
             return self

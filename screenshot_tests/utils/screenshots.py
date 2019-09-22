@@ -58,7 +58,7 @@ class TestCase(common.TestCase):
         y = location["y"]
         width = location["x"] + size['width']
         height = location["y"] + size['height']
-        return x * 2, y * 2, width * 2, height * 2
+        return x, y, width, height
 
     def _get_element_screenshot(self, by, locator, action, finalize) \
             -> Tuple[Image.Image, Tuple[int, int, int, int]]:
