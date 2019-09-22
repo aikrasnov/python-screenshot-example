@@ -1,0 +1,41 @@
+INFO     root:screenshots.py:103 Try make screenshots. Attempts: 0
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 0)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 600)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 1200)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 1800)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 2400)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 3000)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 3600)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 4200)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 4800)»
+INFO     root:image_processor.py:101 Screen size: (1600, 9600)
+INFO     root:image_processor.py:105 Image added, offset is 0
+INFO     root:image_processor.py:105 Image added, offset is 1200
+INFO     root:image_processor.py:105 Image added, offset is 2400
+INFO     root:image_processor.py:105 Image added, offset is 3600
+INFO     root:image_processor.py:105 Image added, offset is 4800
+INFO     root:image_processor.py:105 Image added, offset is 6000
+INFO     root:image_processor.py:105 Image added, offset is 7200
+INFO     root:image_processor.py:105 Image added, offset is 8400
+INFO     root:screenshots.py:75 element: .search2, coordinates: (366, 542, 1570, 614)
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 0)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 600)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 1200)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 1800)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 2400)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 3000)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 3600)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 4200)»
+INFO     root:screenshots.py:32 Scroll to «window.scrollTo(0, 4800)»
+INFO     root:image_processor.py:101 Screen size: (1600, 9600)
+INFO     root:image_processor.py:105 Image added, offset is 0
+INFO     root:image_processor.py:105 Image added, offset is 1200
+INFO     root:image_processor.py:105 Image added, offset is 2400
+INFO     root:image_processor.py:105 Image added, offset is 3600
+INFO     root:image_processor.py:105 Image added, offset is 4800
+INFO     root:image_processor.py:105 Image added, offset is 6000
+INFO     root:image_processor.py:105 Image added, offset is 7200
+INFO     root:image_processor.py:105 Image added, offset is 8400
+INFO     root:screenshots.py:75 element: .search2, coordinates: (366, 544, 1570, 616)
+INFO     root:screenshots.py:122 Coords test: (366, 542, 1570, 614), coords prod: (366, 544, 1570, 616)
+INFO     root:screenshots.py:123 Size test: 1206, size prod: 1206

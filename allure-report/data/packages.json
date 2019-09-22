@@ -1,0 +1,33 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "screenshot_tests.tests.yandex_main_page_test",
+    "children" : [ {
+      "name" : "test_search_field",
+      "uid" : "ff3cf8e351b44c24",
+      "parentUid" : "4a62f88a06567bac990f04c32bc01572",
+      "status" : "failed",
+      "time" : {
+        "start" : 1569176221591,
+        "stop" : 1569176247587,
+        "duration" : 25996
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "test_news_widget",
+      "uid" : "35bf2eac0f3b5d9d",
+      "parentUid" : "4a62f88a06567bac990f04c32bc01572",
+      "status" : "failed",
+      "time" : {
+        "start" : 1569176222538,
+        "stop" : 1569176250120,
+        "duration" : 27582
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "screenshot_tests.tests.yandex_main_page_test"
+  } ]
+}

@@ -1,0 +1,21 @@
+[ {
+  "uid" : "35bf2eac0f3b5d9d",
+  "name" : "test_news_widget",
+  "time" : {
+    "start" : 1569176222538,
+    "stop" : 1569176250120,
+    "duration" : 27582
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "ff3cf8e351b44c24",
+  "name" : "test_search_field",
+  "time" : {
+    "start" : 1569176221591,
+    "stop" : 1569176247587,
+    "duration" : 25996
+  },
+  "status" : "failed",
+  "severity" : "normal"
+} ]

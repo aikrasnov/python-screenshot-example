@@ -1,0 +1,5 @@
+pytest==5.1.2
+flaky==3.6.1
+selenium==3.141.0
+allure-pytest==2.8.2
+Pillow==6.1.0

@@ -1,0 +1,41 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "screenshot_tests.tests",
+    "children" : [ {
+      "name" : "yandex_main_page_test",
+      "children" : [ {
+        "name" : "TestYandexMainPage",
+        "children" : [ {
+          "name" : "test_search_field",
+          "uid" : "ff3cf8e351b44c24",
+          "parentUid" : "14e9fffecf2f365bb44ac41687f56ae6",
+          "status" : "failed",
+          "time" : {
+            "start" : 1569176221591,
+            "stop" : 1569176247587,
+            "duration" : 25996
+          },
+          "flaky" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "test_news_widget",
+          "uid" : "35bf2eac0f3b5d9d",
+          "parentUid" : "14e9fffecf2f365bb44ac41687f56ae6",
+          "status" : "failed",
+          "time" : {
+            "start" : 1569176222538,
+            "stop" : 1569176250120,
+            "duration" : 27582
+          },
+          "flaky" : false,
+          "parameters" : [ ]
+        } ],
+        "uid" : "14e9fffecf2f365bb44ac41687f56ae6"
+      } ],
+      "uid" : "09b294b6c70fff4ed23fcba65129c6aa"
+    } ],
+    "uid" : "24b6faeef3ea7966bb42e6050a32e636"
+  } ]
+}
