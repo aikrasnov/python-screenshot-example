@@ -47,6 +47,7 @@ class TestCase(common.TestCase):
             time.sleep(scroll_time)
             total_height = self.driver.execute_script("return document.body.parentNode.scrollHeight")
             logging.info(f"new total height: {total_height}")
+            logging.info(f"y: {y}")
             # Если высота перестала изменяться, или элемент уже попал на скриншот.
             # Второе условие позволяет не скролить до конца на стрницах с "бесконечной" длинной (выдача видео, картинок)
             if (old_total_height == total_height) or (total_height > y):
@@ -60,7 +61,7 @@ class TestCase(common.TestCase):
         assert viewport_width == total_width, "Ширина вьюпорта, и ширина экрана должны совпадать"
 
         self._scroll(0, 0)
-        while offset <= total_height:
+        while offset <= total_height or offset <= y:
             logging.info(f"offset: {offset}, total height: {total_height}")
             screenshots.append(self.driver.get_screenshot_as_png())
             offset += viewport_height
@@ -68,7 +69,10 @@ class TestCase(common.TestCase):
 
         # эта часть последнего скриншота, которая дублирует предпоследний скриншот
         # так просходит потому что не всегда страница делится на целое количество вьюпортов
-        over_height = offset - total_height
+        if total_height >= offset:
+            over_height = offset - total_height
+        else:
+            over_height = 0
         logging.info(f"offset: {offset}, total height: {total_height}, over height: {over_height}, pixel density: {self.pixel_ratio}")
         return self.image_processor.paste(screenshots, over_height * self.pixel_ratio)
 
@@ -139,7 +143,7 @@ class TestCase(common.TestCase):
         """Получит скриншоты с текущей страницы, и с эталонной.
 
         Поблочно сравнит их, и вернет количество отличающихся блоков.
-        :param element: любой объект у которого есть свойства locator_type, и query_string (по ним будет найден элемент)
+        :param element: тюпл с типом локатора и локатором
         :param action: функция которая подготовит страницу к снятию скриншота
         :param full_screen: ресайзить ли браузер до максимума
         :param full_page: скринить всю страницу, а не только переданный элемент
@@ -153,7 +157,7 @@ class TestCase(common.TestCase):
             locator_type, query_string = (By.XPATH, "//body")
             scroll_and_screen = False
         else:
-            locator_type, query_string = element.locator_type, element.query_string
+            locator_type, query_string = element[0], element[1]
 
         saved_url = urlparse(self.driver.current_url)
         # noinspection PyProtectedMember
