@@ -20,10 +20,11 @@ class TestExample(TestCase):
         self.driver.find_element_by_xpath("//input[not(@type='hidden')]").send_keys("foo")
         self.check_by_screenshot(None, full_page=True)
 
-    def test_search_result(self):
+    def test_search_block(self):
         self.driver.get("https://go.mail.ru/")
 
         def action():
+            # Тестируем подсветку таба после переключения на другую вертикаль
             self.driver.find_element_by_xpath("//span[contains(text(), 'Соцсети')]").click()
 
-        self.check_by_screenshot((By.CSS_SELECTOR, ".MainPage-verticalLinksWrapper"), action=action)
+        self.check_by_screenshot((By.CSS_SELECTOR, ".MainVerticalsNav-listItemActive"), action=action)

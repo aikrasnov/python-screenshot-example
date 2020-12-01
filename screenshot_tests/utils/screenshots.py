@@ -69,10 +69,7 @@ class TestCase(common.TestCase):
 
         # эта часть последнего скриншота, которая дублирует предпоследний скриншот
         # так просходит потому что не всегда страница делится на целое количество вьюпортов
-        if total_height >= offset:
-            over_height = offset - total_height
-        else:
-            over_height = 0
+        over_height = offset - total_height
         logging.info(f"offset: {offset}, total height: {total_height}, over height: {over_height}, pixel density: {self.pixel_ratio}")
         return self.image_processor.paste(screenshots, over_height * self.pixel_ratio)
 
@@ -96,6 +93,7 @@ class TestCase(common.TestCase):
         y = location["y"]
         width = location["x"] + size['width']
         height = location["y"] + size['height']
+        # (312, 691, 1112, 691)
         return x, y, width, height
 
     def _get_coords_by_locator(self, locator_type, query_string) -> Tuple[int, int, int, int]:

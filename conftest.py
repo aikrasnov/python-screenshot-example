@@ -1,7 +1,7 @@
 import pytest
 import logging
 import allure
-from selenium.webdriver import Chrome, ChromeOptions
+from selenium.webdriver import Chrome, ChromeOptions, Remote
 
 
 class Config:
