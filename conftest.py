@@ -23,13 +23,13 @@ def driver():
 def pytest_addoption(parser):
     """Command line parser."""
     parser.addoption(f'--{Config.BASE_URL}',
-                     default='https://yandex.ru',
+                     default='https://go.mail.ru/',
                      dest=Config.BASE_URL,
                      action='store',
                      metavar='str',
                      help='Environment for run tests.')
     parser.addoption(f'--{Config.STAGING}',
-                     default='https://yandex.ru',
+                     default='go.mail.ru',
                      dest=Config.STAGING,
                      action='store',
                      metavar='str',
