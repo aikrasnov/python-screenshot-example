@@ -2,6 +2,7 @@ import pytest
 import logging
 import allure
 from selenium.webdriver import Chrome, ChromeOptions
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 class Config:
@@ -13,7 +14,7 @@ class Config:
 def driver():
     options = ChromeOptions()
     options.add_argument("--headless")
-    webdriver = Chrome(desired_capabilities=options.to_capabilities())
+    webdriver = Chrome(ChromeDriverManager().install(), desired_capabilities=options.to_capabilities())
     webdriver.implicitly_wait(5)
     yield webdriver
     allure.attach(webdriver.current_url, "last url", allure.attachment_type.URI_LIST)

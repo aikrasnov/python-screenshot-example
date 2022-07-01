@@ -136,9 +136,8 @@ class ImageProcessor(object):
             max_width = image.size[0] if image.size[0] > max_width else max_width
             max_height += image.size[1]
 
-        # Склейка работает так: сначала создаем одно "пустое" изображение равное размеру всех скелееных, и вставляем в
-        # в него по одному все скриншоты.
-        # Чтобы в финальном скрине не получилось что скриншоты заняли меньше места, чем картинка, снизу отрезаем over_height
+        # Склейка работает так: сначала создаем одно "пустое" изображение равное размеру всех скелееных, и вставляем в него по одному все скриншоты.
+        # Чтобы в финальном скрине не получилось что скриншоты заняли меньше места, чем картинка, снизу отрезаем over_height.
         max_height = max_height - over_height
         result = Image.new('RGB', (max_width, max_height))
         logging.info(f'Screen size: ({max_width}, {max_height})')
@@ -161,14 +160,16 @@ class ImageProcessor(object):
 
         return result
 
-    def load_image_from_bytes(self, data: bytes) -> Image.Image:
+    @staticmethod
+    def load_image_from_bytes(data: bytes) -> Image.Image:
         """Загрузить изображение из байтовой строки."""
         with BytesIO(data) as fp:
             image: Image.Image = Image.open(fp)
             image.load()
             return image
 
-    def image_to_bytes(self, image: Image.Image) -> bytes:
+    @staticmethod
+    def image_to_bytes(image: Image.Image) -> bytes:
         with BytesIO() as fp:
             image.save(fp, "PNG")
             return fp.getvalue()
