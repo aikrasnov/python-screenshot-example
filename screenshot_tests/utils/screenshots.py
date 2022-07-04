@@ -187,9 +187,9 @@ class TestCase(common.TestCase):
 
         return diff, saved_url, prod_url
 
-    # def get_diff(self, *args, **kwargs):
-    #     diff, _, _ = self._get_diff(*args, **kwargs)
-    #     return diff
+    def get_diff(self, *args, **kwargs):
+        diff, _, _ = self._get_diff(*args, **kwargs)
+        return diff
 
     def check_by_screenshot(self, element, *args, **kwargs):
         diff, saved_url, prod_url = self._get_diff(element, *args, **kwargs)
