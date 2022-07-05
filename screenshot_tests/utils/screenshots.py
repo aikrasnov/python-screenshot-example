@@ -1,17 +1,19 @@
 """Screenshot TestCase."""
 
 import logging
+import time
+from typing import Tuple
+from urllib.parse import urlparse
+
 import allure
 import pytest
-import time
-
+from PIL import Image
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from urllib.parse import urlparse
-from screenshot_tests.utils import common
+
 from screenshot_tests.image_proccessing.image_processor import ImageProcessor
-from typing import Tuple
-from PIL import Image
+from screenshot_tests.utils import common
+
 
 # noinspection PyAttributeOutsideInit
 # аннотируем все классы всех скриншот тестов для работы плагина
@@ -83,7 +85,7 @@ class TestCase(common.TestCase):
         """Без учета плотности пикселей."""
         wait = WebDriverWait(self.driver, timeout=10, ignored_exceptions=Exception)
         wait.until(lambda _: self.driver.find_element(locator_type, query_string).is_displayed(),
-                        message="Невозможно получить размеры элемента, элемент не отображается")
+                   message="Невозможно получить размеры элемента, элемент не отображается")
         # После того, как дождались видимости элемента, ждем еще 2 секунды, чтобы точно завершились разные анимации
         time.sleep(2)
         el = self.driver.find_element(locator_type, query_string)
@@ -100,13 +102,14 @@ class TestCase(common.TestCase):
         x, y, width, height = self._get_raw_coords_by_locator(locator_type, query_string)
         return x * self.pixel_ratio, y * self.pixel_ratio, width * self.pixel_ratio, height * self.pixel_ratio
 
-    def _get_element_screenshot(self,
-                                locator_type,
-                                query_string,
-                                action,
-                                finalize,
-                                scroll_and_screen) \
-     -> Tuple[Image.Image, Tuple[int, int, int, int]]:
+    def _get_element_screenshot(
+        self,
+        locator_type,
+        query_string,
+        action,
+        finalize,
+        scroll_and_screen
+    ) -> Tuple[Image.Image, Tuple[int, int, int, int]]:
         """Сделать скриншот страницы и кропнуть до скриншота элемента.
 
         Не получится использовать метод session/{sessionId}/element/{elementId}/screenshot
@@ -137,16 +140,16 @@ class TestCase(common.TestCase):
 
         return screen.crop(coordinates), coordinates
 
-    def _get_diff(self, element, action=None, full_screen=True, full_page=False, finalize=None, scroll_and_screen=True):
+    def _get_diff(self, element=None, action=None, full_screen=True, full_page=False, finalize=None, scroll_and_screen=True):
         """Получит скриншоты с текущей страницы, и с эталонной.
 
         Поблочно сравнит их, и вернет количество отличающихся блоков.
-        :param element: тюпл с типом локатора и локатором
-        :param action: функция которая подготовит страницу к снятию скриншота
-        :param full_screen: ресайзить ли браузер до максимума
-        :param full_page: скринить всю страницу, а не только переданный элемент
-        :param finalize: финализация после сравнения скриншотов
-        :param scroll_and_screen: скролить страницу (сверху к низу) и склеивать участки в один скриншот
+        :param element: tuple с типом локатора и локатором.
+        :param action: функция, которая подготовит страницу к снятию скриншота.
+        :param full_screen: resize ли браузер до максимума.
+        :param full_page: скринить всю страницу, а не только переданный элемент.
+        :param finalize: финализация после сравнения скриншотов.
+        :param scroll_and_screen: скролить страницу (сверху к низу) и склеивать участки в один скриншот.
         """
         if full_screen:
             self._use_full_screen()
@@ -162,13 +165,11 @@ class TestCase(common.TestCase):
         prod_url = saved_url._replace(netloc=self.staging)
 
         # На текущей странице делаем первый скриншот
-        first_image, coords_test = self._get_element_screenshot(locator_type, query_string, action, finalize,
-                                                                scroll_and_screen)
+        first_image, coords_test = self._get_element_screenshot(locator_type, query_string, action, finalize, scroll_and_screen)
         logging.info('Done screen on test stand')
         # Теперь делаем скриншот в проде
         self.driver.get(prod_url.geturl())
-        second_image, coords_prod = self._get_element_screenshot(locator_type, query_string, action, finalize,
-                                                                 scroll_and_screen)
+        second_image, coords_prod = self._get_element_screenshot(locator_type, query_string, action, finalize, scroll_and_screen)
         logging.info('Done screen on stage stand')
 
         # Возращаемся на тестовый стенд. Всегда нужно возвращаться на тестовый стенд. На это завязаны тесты и отчеты

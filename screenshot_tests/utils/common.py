@@ -1,9 +1,9 @@
 import pytest
-import os
+
 from conftest import Config
-from typing import Type
 
 
+# noinspection PyAttributeOutsideInit
 class TestCase:
     """Base class for all tests."""
 
